@@ -1,7 +1,7 @@
 // Setup initial game stats
 let score = 0;
 let lives = 2;
-let pellets = 10;
+let pellets = 4;
 
 
 // Define your ghosts here
@@ -62,6 +62,7 @@ function displayStats() {
 function displayMenu() {
     console.log('\n\nSelect Option:\n'); // each \n creates a new line
     console.log('(d) Eat Dot');
+    console.log('(p) Eat Power-Pellet');
     console.log('(1) Eat Inky');
     console.log('(2) Eat Blinky');
     console.log('(3) Eat Pinky');
@@ -97,6 +98,15 @@ function checkLives() {
     if (lives == 0) {
         process.exit();
     }
+}
+
+function eatPowerPellet() {
+    ghosts.forEach(function(ghost) {
+        ghost['edible'] = true;
+    })
+    pellets -= 1;
+    console.log('\nNUM NUM NUM!');
+    score += 50;
 }
 
 // Process Player's Input
