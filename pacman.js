@@ -101,9 +101,8 @@ function checkLives() {
 }
 
 function eatPowerPellet() {
-    ghosts.forEach(function(ghost) {
-        ghost['edible'] = true;
-    })
+
+    ghosts['edible'] = true;
     pellets -= 1;
     console.log('\nNUM NUM NUM!');
     score += 50;
@@ -119,6 +118,14 @@ function processInput(key) {
         case 'd':
             eatDot();
             break;
+        case 'p':
+            if (pellets > 0) {
+                eatPowerPellet();
+                break;
+            } else {
+                console.log('\nPower Pellets are out dawg');
+                break;
+            }
         default:
             console.log('\nInvalid Command!');
     }
