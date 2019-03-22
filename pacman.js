@@ -85,12 +85,14 @@ function eatDot() {
 
 function eatGhosts(ghost) {
     if (ghost['edible'] == false) {
+        console.log(`\nPacMan just ate ${ghost['name']}!`);
+        score += 200;
+        ghosts['edible'] = false;
+
+    } else {
         console.log(`\nPacMan was eaten by ${ghost['name']}!`);
         lives -= 1;
         checkLives();
-    } else {
-        console.log(`\nPacMan just ate ${ghost['name']}!`);
-        score += 30;
     }
 }
 
@@ -126,6 +128,14 @@ function processInput(key) {
                 console.log('\nPower Pellets are out dawg');
                 break;
             }
+        case '1':
+            eatGhosts(inky);
+        case '2':
+            eatGhosts(blinky);
+        case '3':
+            eatGhosts(pinky);
+        case '4':
+            eatGhosts(clyde);
         default:
             console.log('\nInvalid Command!');
     }
